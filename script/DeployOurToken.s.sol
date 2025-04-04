@@ -7,10 +7,11 @@ import {OurToken} from "../src/OurToken.sol";
 
 contract DeployOurToken is Script {
         uint256 public constant INTIAL_SUPPLY = 1000 ether;
-        function run() external {
+        function run() external returns(OurToken) {
 
         vm.startBroadcast();
-        new OurToken(INTIAL_SUPPLY);
+        OurToken ot = new OurToken(INTIAL_SUPPLY);
         vm.stopBroadcast();
+        return ot;
     }
 }
